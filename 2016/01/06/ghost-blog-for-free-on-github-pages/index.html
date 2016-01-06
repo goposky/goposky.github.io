@@ -1,0 +1,194 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Quick and free ghost blog hosting</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=07e15180b5">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Gopal Ramachandran">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quick and free ghost blog hosting">
+    <meta property="og:description" content="Ghost is an opensource blogging platform, with beautifully simplistic themes (this website uses the default theme) and handy markdown editing with realtime preview. It is also free if you are willing to download and host it yourself. Ghost is written...">
+    <meta property="og:url" content="http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/">
+    <meta property="article:published_time" content="2016-01-06T14:47:00.000Z">
+    <meta property="article:modified_time" content="2016-01-06T20:49:01.686Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Quick and free ghost blog hosting">
+    <meta name="twitter:description" content="Ghost is an opensource blogging platform, with beautifully simplistic themes (this website uses the default theme) and handy markdown editing with realtime preview. It is also free if you are willing to download and host it yourself. Ghost is written...">
+    <meta name="twitter:url" content="http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Gopal Ramachandran",
+    "author": {
+        "@type": "Person",
+        "name": "Gopal Ramachandran",
+        "url": "http://localhost:2368/author/gopal",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Quick and free ghost blog hosting",
+    "url": "http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/",
+    "datePublished": "2016-01-06T14:47:00.000Z",
+    "dateModified": "2016-01-06T20:49:01.686Z",
+    "description": "Ghost is an opensource blogging platform, with beautifully simplistic themes (this website uses the default theme) and handy markdown editing with realtime preview. It is also free if you are willing to download and host it yourself. Ghost is written..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="Gopal Ramachandran" href="http://localhost:2368/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64780937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head><body><center>
+    <a href="http://www.goposky.com">/home</a> <a href="http://www.twitter.com/goposky" target="_blank">/twitter</a> <a href="http://www.linkedin.com/in/goposky" target="_blank">/linkedin</a> <a href="http://www.instagram.com/goposky" target="_blank">/instagram</a> <a href="http://www.goodreads.com/goposky" target="_blank">/goodreads</a> <a href="mailto:mail@goposky.com" target="_blank">/email</a>
+</center>
+
+
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Quick and free ghost blog hosting</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-01-06">06 January 2016</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p><a href="http://ghost.org">Ghost</a> is an opensource blogging platform, with beautifully simplistic themes (this website uses the default theme) and handy markdown editing with realtime preview. It is also free if you are willing to download and host it yourself. Ghost is written in javascript and runs on nodejs.</p>
+
+<p><a href="https://pages.github.com">Github pages</a> is a free platform that allows you to publish your static website by just pushing to a github repository. I have noticed significant site response gain after I moved from ghost pro to github pages, and also I get the goodness of github backup for my blog.</p>
+
+<p>In this recipe (written with mint 17.2) we setup ghost locally, and create our blog. We then use <a href="https://github.com/axitkhurana/buster">buster</a>, a python utility which takes in any hosted website's base url, and generates the equivalent static pages and resources, and pushes them to our github pages repo.</p>
+
+<h6 id="step1setupghost">Step 1. Setup ghost</h6>
+
+<pre><code># Create a directory to store your ghost blog content
+sudo mkdir /var/www/ghost  
+</code></pre>
+
+<p>Only a few months ago ghost published their <a href="https://hub.docker.com/_/ghost/">official dockerfile</a>, so you can run ghost in a container as below.  </p>
+
+<pre><code>docker run -d --name myblog -p 8080:2368 -v /var/www/ghost:/var/lib/ghost ghost  
+</code></pre>
+
+<p>Here <code>8080</code> is the port on your localhost where you want to access the blog. You link the local volume <code>/var/www/ghost</code> so that your changes aren't lost when the container stops. <br>
+That's it, browse to <code>localhost:8080</code> to access your blog. You can manage your blog at <code>localhost:8080\ghost</code>.</p>
+
+<h6 id="step2setupgithubpageswithbuster">Step 2. Setup Github pages with buster</h6>
+
+<p>Login to your github account and create a public repo by the name <code>&lt;accountname&gt;.github.io</code>. <br>
+Install buster.  </p>
+
+<pre><code>pip install buster  
+</code></pre>
+
+<p>Create a separate directory for the static site generated by buster. From within this directory, run:  </p>
+
+<pre><code># Run below command and enter your github repo url when prompted
+buster setup  
+# To generate the static files (with your ghost container running)
+buster generate --domain=http://localhost:8080  
+</code></pre>
+
+<p>Add, commit and push the changes to github to see your website updated at <code>&lt;accountname&gt;.github.io</code> <br>
+Note: If you want your domain to point to your github pages website, add a file to your repo named <code>CNAME</code> with a single line containing your domain name. Also update your domain's DNS record and you are set.</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../../../../author/gopal/">Gopal Ramachandran</a></h4>
+
+                    <p>Read <a href="../../../../author/gopal/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Quick%20and%20free%20ghost%20blog%20hosting&amp;url=http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/2016/01/06/ghost-blog-for-free-on-github-pages/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story prev no-cover" href="../../../../2015/12/28/software-circus/">
+        <section class="post">
+            <h2>Software Circus Winter Wonderland</h2>
+            <p>On 17 December 2015, the Cloud Native Computing Foundation project announced its members, governance structure and the beginning of…</p>
+        </section>
+    </a>
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://localhost:2368">Gopal Ramachandran</a> © 2016</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=07e15180b5"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=07e15180b5"></script>
+
+
+</body>
