@@ -1,0 +1,242 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Nodejs API development impressions</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=8e4eaeceec">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="http://goposky.com/2016/05/29/nodejs-api-development-impressions/">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="Gopal Ramachandran">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Nodejs API development impressions">
+    <meta property="og:description" content="Recently at work I built an API+Portal solution with nodejs. These are some impressions.  Note: This is not an in-depth technical how-to document. Framework selection Nodejs is a great way to develop api's very fast. A great place to...">
+    <meta property="og:url" content="http://goposky.com/2016/05/29/nodejs-api-development-impressions/">
+    <meta property="article:published_time" content="2016-05-29T14:47:00.000Z">
+    <meta property="article:modified_time" content="2016-05-29T21:41:06.167Z">
+    <meta property="article:tag" content="nodejs">
+    <meta property="article:tag" content="angularjs">
+    <meta property="article:tag" content="javascript">
+    <meta property="article:tag" content="rest">
+    <meta property="article:tag" content="swagger">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nodejs API development impressions">
+    <meta name="twitter:description" content="Recently at work I built an API+Portal solution with nodejs. These are some impressions.  Note: This is not an in-depth technical how-to document. Framework selection Nodejs is a great way to develop api's very fast. A great place to...">
+    <meta name="twitter:url" content="http://goposky.com/2016/05/29/nodejs-api-development-impressions/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Gopal Ramachandran",
+    "author": {
+        "@type": "Person",
+        "name": "Gopal Ramachandran",
+        "url": "http://goposky.com/author/gopal",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Nodejs API development impressions",
+    "url": "http://goposky.com/2016/05/29/nodejs-api-development-impressions/",
+    "datePublished": "2016-05-29T14:47:00.000Z",
+    "dateModified": "2016-05-29T21:41:06.167Z",
+    "keywords": "nodejs, angularjs, javascript, rest, swagger",
+    "description": "Recently at work I built an API+Portal solution with nodejs. These are some impressions.  Note: This is not an in-depth technical how-to document. Framework selection Nodejs is a great way to develop api's very fast. A great place to..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="Gopal Ramachandran" href="http://goposky.com/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64780937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head><body><center>
+    <a href="http://www.goposky.com">/home</a> <a href="http://www.twitter.com/goposky" target="_blank">/twitter</a> <a href="http://www.linkedin.com/in/goposky" target="_blank">/linkedin</a> <a href="http://www.github.com/goposky" target="_blank">/github</a> <a href="http://www.instagram.com/goposky" target="_blank">/instagram</a> <a href="http://www.goodreads.com/goposky" target="_blank">/goodreads</a> <a href="mailto:mail@goposky.com" target="_blank">/email</a>
+</center>
+
+
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-nodejs tag-angularjs tag-javascript tag-rest tag-swagger">
+
+        <header class="post-header">
+            <h1 class="post-title">Nodejs API development impressions</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2016-05-29">29 May 2016</time>  on <a href="../../../../tag/nodejs/">nodejs</a>, <a href="../../../../tag/angularjs/">angularjs</a>, <a href="../../../../tag/javascript/">javascript</a>, <a href="../../../../tag/rest/">rest</a>, <a href="../../../../tag/swagger/">swagger</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Recently at work I built an API+Portal solution with nodejs. Nodejs is a great way to develop api's very fast. A great place to pick up nodejs basics is <a href="https://github.com/maxogden/art-of-node">here</a>. For someone starting to develop a nodejs application for the enterprise there are a few considerations which I list below. <br>
+Note: This is not an in-depth how-to document.</p>
+
+<h6 id="frameworkselection">Framework selection</h6>
+
+<p>A nice selection of node frameworks can be found <a href="http://nodeframework.com/">here</a>. For my application I used the <a href="http://restify.com/">restify</a>
+ module which provides a framework to build 'correct REST webservices'. 
+In other words, it provides for building pure rest api implementation 
+unlike express, which is more of an MVC framework. With resitfy I could 
+decouple the UI and API into separate applications. Node modules, which 
+are basically libraries are available for all kinds of needs.</p>
+
+<h6 id="angularjs">Angularjs</h6>
+
+<p>Angularjs is excellent when it comes to simplifying frontend 
+development. Databinding works like magic, and so are the other 
+innumerous features. The <a href="http://angular.codeschool.com/">Flatlander store tutorial</a> is a good place to pick up the essentials. Together with <a href="http://getbootstrap.com/">Bootstrap</a> you can build pretty and snappy websites easily.</p>
+
+<h6 id="knowyourjavascript">Know your javascript</h6>
+
+<p>Of particular importance is Callbacks. Everything in nodejs is 
+asynchronous, ie., the execution carries on without waiting for the 
+results of the current line of code. Callbacks allow you to capture the 
+results of high-response-time functions (like DB actions, LDAP queries, 
+etc) and trigger actions accordingly. Once you get the hang of hit, you 
+will sooner or later end up with something known as <a href="http://callbackhell.com/">Callback hell</a>. And then there is the problem of <a href="http://tobyho.com/2011/11/02/callbacks-in-loops">callbacks within loops</a>. Callbacks are both the boon and bane of javascript. There are better ways to mitigate callback hell, such as with the use of <a href="https://www.promisejs.org/">Promises</a>, Generators (only in JS 6), or other frameworks like <a href="http://reactivex.io/">Rxjs</a> which is based on the Observer pattern.</p>
+
+<h6 id="applicationstructure">Application Structure</h6>
+
+<p>Structuring the application is an important first step. Best practice
+ is to break down the application into feature modules (subdirectories),
+ and further breakdown each module into controllers, models, views, 
+factories, etc. The wiring can be done via routes, and the various 
+frameworks provides ways to do this. This way of modularizing helps with
+ maintenance as the codebase grows. Recommended practice is to add code 
+in layers as wrappers of more specific implementation.</p>
+
+<h6 id="apidesign">API design</h6>
+
+<p>Modeling the application around logical resources and then using HTTP
+ methods to operate on these resources is the essence RESTful API 
+design. This topic deems much consideration and there is plenty of 
+literature and best practices available.</p>
+
+<h6 id="apidiscoverydocumentation">API discovery/documentation</h6>
+
+<p>The use of tools like <a href="http://swagger.io/">Swagger</a> allow 
+you to both define your APIs, and automatically generate the stubs, thus
+ letting you focus just on writing the actual functional code. Swagger 
+also generates the API documentation. It is advisable to implement a 
+solution like swagger early on since retroactive fitting can give you a 
+headache.</p>
+
+<h6 id="authenticationauthorization">Authentication &amp; Authorization</h6>
+
+<p>If your application consists of stateless API which require some form of user authentication I recommend using <a href="https://jwt.io/introduction">JSON Web tokens</a>.
+ JWT is an authentication protocol and using jsonwebtoken we can limit 
+user access to the application. A more comprehensive A&amp;A solution 
+can be implemented using <a href="http://oauth.net/2">oath2</a> which is an authentication framework.</p>
+
+<h6 id="backend">Backend</h6>
+
+<p>I used the <a href="https://www.npmjs.com/package/mongodb">node mongodb driver</a>
+ to connect to my mongo database. Mongoose is another useful mongodb 
+module which many use. My application also required to interface with 
+LDAP for which I used the <a href="http://ldapjs.org/">ldapjs</a> 
+module. As mentioned before there are modules for all kinds of needs and
+ the large node community makes it easy to find solutions on the web.</p>
+
+<h6 id="testdrivendevelopment">Test-driven development</h6>
+
+<p>TDD is an important agile development principle and Nodejs has 
+built-in assert module to support this. Using a test framework like <a href="https://mochajs.org/">Mocha</a> in conjunction with nodejs allows developers to write better code.</p>
+
+<h6 id="continuousdelivery">Continuous delivery</h6>
+
+<p>Last but not the least, it is important to plug in any application 
+development exercise to a continuous delivery setup. This includes your 
+usual suspects: source code repo, a dockerized application build and 
+deployment setup, automated testing, etc. Again this topic deserves its own blog post.</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../../../../author/gopal/">Gopal Ramachandran</a></h4>
+
+                    <p>Read <a href="../../../../author/gopal/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Nodejs%20API%20development%20impressions&amp;url=http://goposky.com/2016/05/29/nodejs-api-development-impressions/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://goposky.com/2016/05/29/nodejs-api-development-impressions/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://goposky.com/2016/05/29/nodejs-api-development-impressions/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story prev no-cover" href="../../../../2015/12/28/software-circus/">
+        <section class="post">
+            <h2>Software Circus Winter Wonderland</h2>
+            <p>On 17 December 2015, the Cloud Native Computing Foundation project announced its members, governance structure and the beginning of…</p>
+        </section>
+    </a>
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="http://goposky.com">Gopal Ramachandran</a> © 2016</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=8e4eaeceec"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=8e4eaeceec"></script>
+
+
+</body>
