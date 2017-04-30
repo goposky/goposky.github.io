@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="../../../../favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
-    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=fa8bb3200b">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=f46bf7308c">
 
 
     <link rel="canonical" href="http://www.goposky.com/2016/05/29/nodejs-api-development-impressions/">
@@ -26,7 +26,7 @@
     <meta property="og:description" content="Recently at work I built an API+Portal solution with nodejs. Nodejs is a great way to develop api's very fast. A great place to pick up nodejs basics is here. For someone starting to develop a nodejs application for the enterprise there are a few considerations which I list">
     <meta property="og:url" content="http://www.goposky.com/2016/05/29/nodejs-api-development-impressions/">
     <meta property="article:published_time" content="2016-05-29T10:00:00.000Z">
-    <meta property="article:modified_time" content="2017-04-28T13:26:44.000Z">
+    <meta property="article:modified_time" content="2017-04-30T09:19:23.000Z">
     <meta property="article:tag" content="nodejs">
     <meta property="article:tag" content="angularjs">
     <meta property="article:tag" content="javascript">
@@ -60,7 +60,7 @@
     "headline": "Nodejs API development impressions",
     "url": "http://www.goposky.com/2016/05/29/nodejs-api-development-impressions/",
     "datePublished": "2016-05-29T10:00:00.000Z",
-    "dateModified": "2017-04-28T13:26:44.000Z",
+    "dateModified": "2017-04-30T09:19:23.000Z",
     "keywords": "nodejs, angularjs, javascript, rest, swagger",
     "description": "Recently at work I built an API+Portal solution with nodejs. Nodejs is a great way to develop api&#x27;s very fast. A great place to pick up nodejs basics is here. For someone starting to develop a nodejs application for the enterprise there are a few considerations which I list",
     "mainEntityOfPage": {
@@ -101,35 +101,45 @@
         <section class="post-content">
             <p>Recently at work I built an API+Portal solution with nodejs. Nodejs is a great way to develop api's very fast. A great place to pick up nodejs basics is <a href="https://github.com/maxogden/art-of-node">here</a>. For someone starting to develop a nodejs application for the enterprise there are a few considerations which I list below. This is not an in depth how-to document or study of design strategies but a summary of a few technologies and methods involved. For design best practices I would highly recommend the guideline known as the <a href="http://12factor.net/">Twelve-Factor app</a>.</p>
 
-<p><strong>Framework selection</strong>
-A nice selection of node frameworks can be found <a href="http://nodeframework.com/">here</a>. For my application I used the <a href="http://restify.com/">restify</a> module which provides a framework to build 'correct REST webservices'. In other words, it provides for building pure rest api implementation unlike express, which is more of an MVC framework. With resitfy I could decouple the UI and API into separate applications. Node modules, which are basically libraries are available for all kinds of needs.</p>
+<h6 id="frameworkselection">Framework selection</h6>
 
-<p><strong>Angularjs</strong>
-Angularjs is excellent when it comes to simplifying frontend development. Databinding works like magic, and so are the other innumerous features. The <a href="http://angular.codeschool.com/">Flatlander store tutorial</a> is a good place to pick up the essentials. Together with <a href="http://getbootstrap.com/">Bootstrap</a> you can build pretty and snappy websites easily.</p>
+<p>A nice selection of node frameworks can be found <a href="http://nodeframework.com/">here</a>. For my application I used the <a href="http://restify.com/">restify</a> module which provides a framework to build 'correct REST webservices'. In other words, it provides for building pure rest api implementation unlike express, which is more of an MVC framework. With resitfy I could decouple the UI and API into separate applications. Node modules, which are basically libraries are available for all kinds of needs.</p>
 
-<p><strong>Know your javascript</strong>
-Of particular importance is Callbacks. Everything in nodejs is asynchronous, ie., the execution carries on without waiting for the results of the current line of code. Callbacks allow you to capture the results of high-response-time functions (like DB actions, LDAP queries, etc) and trigger actions accordingly. Once you get the hang of hit, you will sooner or later end up with something known as <a href="http://callbackhell.com/">Callback hell</a>. And then there is the problem of <a href="http://tobyho.com/2011/11/02/callbacks-in-loops">callbacks within loops</a>. Callbacks are both the boon and bane of javascript. There are better ways to mitigate callback hell, such as with the use of <a href="https://www.promisejs.org/">Promises</a>, Generators (only in JS 6), or other frameworks like <a href="http://reactivex.io/">Rxjs</a> which is based on the Observer pattern.</p>
+<h6 id="angularjs">Angularjs</h6>
 
-<p><strong>Application Structure</strong>
-Structuring the application is an important first step. Best practice is to break down the application into feature modules (subdirectories), and further breakdown each module into controllers, models, views, factories, etc. The wiring can be done via routes, and the various frameworks provides ways to do this. This way of modularizing helps with maintenance as the codebase grows. Recommended practice is to add code in layers as wrappers of more specific implementation.</p>
+<p>Angularjs is excellent when it comes to simplifying frontend development. Databinding works like magic, and so are the other innumerous features. The <a href="http://angular.codeschool.com/">Flatlander store tutorial</a> is a good place to pick up the essentials. Together with <a href="http://getbootstrap.com/">Bootstrap</a> you can build pretty and snappy websites easily.</p>
 
-<p><strong>API design</strong>
-Modeling the application around logical resources and then using HTTP methods to operate on these resources is the essence RESTful API design. This topic deems much consideration and there is plenty of literature and best practices available.</p>
+<h6 id="knowyourjavascript">Know your javascript</h6>
 
-<p><strong>API discovery/documentation</strong>
-The use of tools like <a href="http://swagger.io/">Swagger</a> allow you to both define your APIs, and automatically generate the stubs, thus letting you focus just on writing the actual functional code. Swagger also generates the API documentation. It is advisable to implement a solution like swagger early on since retroactive fitting can give you a headache.</p>
+<p>Of particular importance is Callbacks. Everything in nodejs is asynchronous, ie., the execution carries on without waiting for the results of the current line of code. Callbacks allow you to capture the results of high-response-time functions (like DB actions, LDAP queries, etc) and trigger actions accordingly. Once you get the hang of hit, you will sooner or later end up with something known as <a href="http://callbackhell.com/">Callback hell</a>. And then there is the problem of <a href="http://tobyho.com/2011/11/02/callbacks-in-loops">callbacks within loops</a>. Callbacks are both the boon and bane of javascript. There are better ways to mitigate callback hell, such as with the use of <a href="https://www.promisejs.org/">Promises</a>, Generators (only in JS 6), or other frameworks like <a href="http://reactivex.io/">Rxjs</a> which is based on the Observer pattern.</p>
 
-<p><strong>Authentication &amp; Authorization</strong>
-If your application consists of stateless API which require some form of user authentication I recommend using <a href="https://jwt.io/introduction">JSON Web tokens</a>. JWT is an authentication protocol and using jsonwebtoken we can limit user access to the application. A more comprehensive A&amp;A solution can be implemented using <a href="http://oauth.net/2">oath2</a> which is an authentication framework.</p>
+<h6 id="applicationstructure">Application Structure</h6>
 
-<p><strong>Backend</strong>
-I used the <a href="https://www.npmjs.com/package/mongodb">node mongodb driver</a> to connect to my mongo database. Mongoose is another useful mongodb module which many use. My application also required to interface with LDAP for which I used the <a href="http://ldapjs.org/">ldapjs</a> module. As mentioned before there are modules for all kinds of needs and the large node community makes it easy to find solutions on the web.</p>
+<p>Structuring the application is an important first step. Best practice is to break down the application into feature modules (subdirectories), and further breakdown each module into controllers, models, views, factories, etc. The wiring can be done via routes, and the various frameworks provides ways to do this. This way of modularizing helps with maintenance as the codebase grows. Recommended practice is to add code in layers as wrappers of more specific implementation.</p>
 
-<p><strong>Test-driven development</strong>
-TDD is an important agile development principle and Nodejs has built-in assert module to support this. Using a test framework like <a href="https://mochajs.org/">Mocha</a> in conjunction with nodejs allows developers to write better code.</p>
+<h6 id="apidesign">API design</h6>
 
-<p><strong>Continuous delivery</strong>
-Last but not the least, it is important to plug in any application development exercise to a continuous delivery setup. This includes your usual suspects: source code repo, a dockerized application build and deployment setup, automated testing, etc. Again this topic deserves its own blog post.</p>
+<p>Modeling the application around logical resources and then using HTTP methods to operate on these resources is the essence RESTful API design. This topic deems much consideration and there is plenty of literature and best practices available.</p>
+
+<h6 id="apidiscoverydocumentation">API discovery/documentation</h6>
+
+<p>The use of tools like <a href="http://swagger.io/">Swagger</a> allow you to both define your APIs, and automatically generate the stubs, thus letting you focus just on writing the actual functional code. Swagger also generates the API documentation. It is advisable to implement a solution like swagger early on since retroactive fitting can give you a headache.</p>
+
+<h6 id="authenticationauthorization">Authentication &amp; Authorization</h6>
+
+<p>If your application consists of stateless API which require some form of user authentication I recommend using <a href="https://jwt.io/introduction">JSON Web tokens</a>. JWT is an authentication protocol and using jsonwebtoken we can limit user access to the application. A more comprehensive A&amp;A solution can be implemented using <a href="http://oauth.net/2">oath2</a> which is an authentication framework.</p>
+
+<h6 id="backend">Backend</h6>
+
+<p>I used the <a href="https://www.npmjs.com/package/mongodb">node mongodb driver</a> to connect to my mongo database. Mongoose is another useful mongodb module which many use. My application also required to interface with LDAP for which I used the <a href="http://ldapjs.org/">ldapjs</a> module. As mentioned before there are modules for all kinds of needs and the large node community makes it easy to find solutions on the web.</p>
+
+<h6 id="testdrivendevelopment">Test-driven development</h6>
+
+<p>TDD is an important agile development principle and Nodejs has built-in assert module to support this. Using a test framework like <a href="https://mochajs.org/">Mocha</a> in conjunction with nodejs allows developers to write better code.</p>
+
+<h6 id="continuousdelivery">Continuous delivery</h6>
+
+<p>Last but not the least, it is important to plug in any application development exercise to a continuous delivery setup. This includes your usual suspects: source code repo, a dockerized application build and deployment setup, automated testing, etc. Again this topic deserves its own blog post.</p>
         </section>
 
         <footer class="post-footer">
@@ -192,7 +202,7 @@ Last but not the least, it is important to plug in any application development e
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     
-    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=fa8bb3200b"></script>
-    <script type="text/javascript" src="../../../../assets/js/index.js?v=fa8bb3200b"></script>
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=f46bf7308c"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=f46bf7308c"></script>
 
 </body>
