@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="../../../../favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
-    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=3810686c08">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4f0c92beb6">
 
 
     <link rel="canonical" href="http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/">
@@ -26,7 +26,7 @@
     <meta property="og:description" content="Red Hat’s OpenShift container platform is an industry leading PaaS for building and running cloud-native applications. OpenShift is an enterprise-grade platform with comprehensive features, but this blog will limit to looking at it from an introductory viewpoint for the developer or CI/CD engineer. For a quick head-start on">
     <meta property="og:url" content="http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/">
     <meta property="article:published_time" content="2017-06-27T20:00:51.000Z">
-    <meta property="article:modified_time" content="2017-06-27T20:00:51.000Z">
+    <meta property="article:modified_time" content="2017-06-28T20:03:28.000Z">
     <meta property="article:tag" content="Openshift">
     <meta property="article:tag" content="PaaS">
     <meta property="article:tag" content="container">
@@ -61,7 +61,7 @@
     "headline": "Exploring OpenShift with Red Hat CDK 3.0",
     "url": "http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/",
     "datePublished": "2017-06-27T20:00:51.000Z",
-    "dateModified": "2017-06-27T20:00:51.000Z",
+    "dateModified": "2017-06-28T20:03:28.000Z",
     "keywords": "Openshift, PaaS, container, devops, RedHat, minishift",
     "description": "Red Hat’s OpenShift container platform is an industry leading PaaS for building and running cloud-native applications. OpenShift is an enterprise-grade platform with comprehensive features, but this blog will limit to looking at it from an introductory viewpoint for the developer or CI/CD engineer. For a quick head-start on",
     "mainEntityOfPage": {
@@ -73,6 +73,16 @@
 
     <meta name="generator" content="Ghost 0.11">
     <link rel="alternate" type="application/rss+xml" title="Personal blog, tech chatter" href="http://www.goposky.com/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64780937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </head>
 <body class="post-template tag-openshift tag-paas tag-container tag-devops tag-redhat tag-minishift nav-closed">
 
@@ -108,9 +118,9 @@
 
 <ul>
 <li><em><a href="https://www.openshift.org">OpenShift Origin</a></em> - The upstream open-source version, built upon Kubernetes and other projects.</li>
-<li><em><a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift Enterprise</a></em> - Red Hat’s flavour of Openshift platform for on-prem or cloud deployment.</li>
+<li><em><del>OpenShift Enterprise</del><sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup> <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Openshift Container Platform</a></em> - Red Hat’s flavour of Openshift platform for on-prem or cloud deployment with support.</li>
 <li><em><a href="https://www.openshift.com/dedicated/index.html">OpenShift Dedicated</a></em> - Same as Openshift enterprise, but hosted as a cloud-based service by Red Hat.</li>
-<li><em><a href="https://www.openshift.com">OpenShift Online</a></em> - A fully managed on-demand PaaS on cloud (with limited memory and storage as of writing).</li>
+<li><em><a href="https://www.openshift.com">OpenShift Online</a></em> - A fully managed on-demand PaaS on cloud with limited memory and storage.</li>
 <li><em><a href="https://developers.redhat.com/products/cdk/overview/">Red Hat CDK</a></em> - Container Development Kit, a stripped-down version to serve as a local environment for developers.</li>
 <li><em><a href="https://openshift.io">openshift.io</a></em> (not GA as of writing) - A fully cloud-based development environment.</li>
 </ul>
@@ -246,6 +256,8 @@ nodejs-ex   nodejs-ex-cdk-intro.192.168.99.100.nip.io             nodejs-ex   80
 <p>Usually we do not want to let our <em>dev</em> and <em>prod</em> containers running on the same host. Typically we have more powerful and secure hosts for our <em>prod</em> environments than for <em>dev</em> or <em>test</em>. This separation can be done easily using <em>labels</em> and <em>selectors</em>. You label specific nodes as <em>env=dev</em>, <em>env=prod</em>, etc. Then, you can specify a <em>nodeSelector</em> for each of your project and specify the label corresponding to the environment. Once this is done, your <em>dev</em> project's pods will land on your <em>dev</em> hosts and <em>prod</em> pods on <em>prod</em> hosts.  <em>Labels</em> and <em>selectors</em> are simple yet powerful, so expect to make use of them a lot.</p>
 
 <p>Organizations that are paranoid about environment isolation can deploy separate OpenShift clusters for each environment, and connect them to a common registry to do continuous delivery across environments. This combined with OpenShift's SDN (software Defined Network) provides robust isolation. Unfortunately you cannot explore a multi-node setup with the CDK environment. You can set that up using the opensource version, or the 30 day evaluation subscription of <a href="https://www.openshift.com/container-platform/trial.html">Openshift Enterprise</a>.</p>
+
+<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Apparently rebranded to sound less enterprise-y and boring. <a href="index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
         </section>
 
         <footer class="post-footer">
@@ -302,7 +314,7 @@ nodejs-ex   nodejs-ex-cdk-intro.192.168.99.100.nip.io             nodejs-ex   80
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
     
-    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=3810686c08"></script>
-    <script type="text/javascript" src="../../../../assets/js/index.js?v=3810686c08"></script>
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4f0c92beb6"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4f0c92beb6"></script>
 
 </body>
