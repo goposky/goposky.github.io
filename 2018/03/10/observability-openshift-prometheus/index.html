@@ -1,0 +1,221 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Observability in OpenShift with Prometheus</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=4bb1087f06">
+
+
+    <link rel="canonical" href="http://www.goposky.com/2018/03/10/observability-openshift-prometheus/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="http://www.goposky.com/2018/03/10/observability-openshift-prometheus/amp/">
+    
+    <meta property="og:site_name" content="Personal blog, tech chatter">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Observability in OpenShift with Prometheus">
+    <meta property="og:description" content="With the move to cloud-native application patterns it has become possible to build scalable and resilient systems that live up to modern demands. We have seen however that with this great change comes, greater complexity. Enterprise-grade platforms like Red Hat OpenShift come to the rescue, shielding away from the developer">
+    <meta property="og:url" content="http://www.goposky.com/2018/03/10/observability-openshift-prometheus/">
+    <meta property="article:published_time" content="2018-03-10T22:21:00.000Z">
+    <meta property="article:modified_time" content="2018-03-10T22:31:31.000Z">
+    <meta property="article:tag" content="Openshift">
+    <meta property="article:tag" content="container">
+    <meta property="article:tag" content="prometheus">
+    <meta property="article:tag" content="observability">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Observability in OpenShift with Prometheus">
+    <meta name="twitter:description" content="With the move to cloud-native application patterns it has become possible to build scalable and resilient systems that live up to modern demands. We have seen however that with this great change comes, greater complexity. Enterprise-grade platforms like Red Hat OpenShift come to the rescue, shielding away from the developer">
+    <meta name="twitter:url" content="http://www.goposky.com/2018/03/10/observability-openshift-prometheus/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Gopal Ramachandran">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Openshift, container, prometheus, observability">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Personal blog, tech chatter",
+        "logo": "http://www.goposky.com/ghost/img/ghosticon.jpg"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Gopal Ramachandran",
+        "url": "http://www.goposky.com/author/gopal/",
+        "sameAs": []
+    },
+    "headline": "Observability in OpenShift with Prometheus",
+    "url": "http://www.goposky.com/2018/03/10/observability-openshift-prometheus/",
+    "datePublished": "2018-03-10T22:21:00.000Z",
+    "dateModified": "2018-03-10T22:31:31.000Z",
+    "keywords": "Openshift, container, prometheus, observability",
+    "description": "With the move to cloud-native application patterns it has become possible to build scalable and resilient systems that live up to modern demands. We have seen however that with this great change comes, greater complexity. Enterprise-grade platforms like Red Hat OpenShift come to the rescue, shielding away from the developer",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://www.goposky.com"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.11">
+    <link rel="alternate" type="application/rss+xml" title="Personal blog, tech chatter" href="http://www.goposky.com/rss/">
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-64780937-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body class="post-template tag-openshift tag-container tag-prometheus tag-observability nav-closed">
+
+    
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+<center><a href="http://www.goposky.com">/home</a> <a href="http://www.twitter.com/goposky" target="_blank">/twitter</a> <a href="http://www.linkedin.com/in/goposky" target="_blank">/linkedin</a> <a href="http://www.github.com/goposky" target="_blank">/github</a> <a href="http://www.instagram.com/goposky" target="_blank">/instagram</a> <a href="mailto:mail@goposky.com" target="_blank">/email</a></center>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-openshift tag-container tag-prometheus tag-observability">
+
+        <header class="post-header">
+            <h1 class="post-title">Observability in OpenShift with Prometheus</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2018-03-10">10 March 2018</time>  on <a href="../../../../tag/openshift/">Openshift</a>, <a href="../../../../tag/container/">container</a>, <a href="../../../../tag/prometheus/">prometheus</a>, <a href="../../../../tag/observability/">observability</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>With the move to cloud-native application patterns it has become possible to build scalable and resilient systems that live up to modern demands. We have seen however that with this great change comes, greater complexity. Enterprise-grade platforms like Red Hat OpenShift come to the rescue, shielding away from the developer much of the complexity of underlying infrastructure.</p>
+
+<p>However, there still remains the question of monitoring the several hundred microservices, as well as the platform that runs them. With many moving parts comes a vital necessity, one that has recently gained much popularity in cloud-native parlance – “Observability”. In this blog we look into how we can leverage observability in Red Hat’s OpenShift Container platform.</p>
+
+<h6 id="thecaseforobservability">The case for Observability</h6>
+
+<p>But first, what does Observability mean? People often use the terms Observability and Monitoring interchangeably. My plan is not to go into the semantics here. Distributed systems expert Cindy Sridharan discusses the topic in her seminal blog post “Monitoring in the Time of Cloud Native”. To me, Observability in simple terms, is the attribute of a system that exposes data about itself that one can easily access. It is the ability to know what is going on, but also why. An “observable” system is one that opens up its vital statistics for easy whitebox monitoring.</p>
+
+<p>“The more visibility you give to people, the less access you need to give them to the infrastructure.” – says Kubernetes guru Kelsey Hightower at the KubeCon in Austin, December 2017. For operations folk, this means a way to both securely monitor the platform and diagnose issues without having to SSH into a machine. As for a developer, this is the ability to easily trace and correlate request flows between hundreds of services.</p>
+
+<h6 id="prometheusforopenshiftagreatfit">Prometheus for OpenShift: a great fit</h6>
+
+<p>Observability is usually grouped in 3 so-called pillars: logging, metrics and tracing. Here we focus on metrics, in particular how we can examine metrics from an OpenShift cluster by leveraging the latest version of Prometheus. Metrics are basically numbers of vital statistics that are aggregated over time. OpenShift inherits the observability built into Kubernetes, and therefore metrics about CPU, memory, network, etc are exposed by the kubelet which are made available by Heapster. OpenShift uses Hawkular as its integrated metrics engine to gather and expose metrics from running pods. With version 3.7 of OpenShift, Prometheus has been added as an experimental feature, and is slated to replace Hawkular as the default metrics engine in a few releases.</p>
+
+<p>Prometheus is a metrics monitoring system that is built with a cloud-native approach to monitor services. It is also a time-series database, a query language (PromQL) to query the time-series, and a dashboard. The modus operandi of Prometheus is “scraping targets”, or in other words, pull metric information from configured sources. It does this at regular intervals, which is again, configurable, and stores these metrics as a time-series in its database. The Prometheus community has put together a great documentation with concise instructions and best practices.</p>
+
+<p><img src="http://www.goposky.com/assets/images/prom-query-browser.png" alt="Prometheus query browser screenshot"></p>
+
+<p>Although Prometheus has been around for a while, with the recent release of its version 2.0 is witnessing a big spurt in adoption. This has among other factors to do with significant improvements in how Prometheus handles storage. Prometheus was also the second open-source project to be adopted by the Cloud-Native Computing Foundation (CNCF) after Kubernetes, and in all sense is a perfect fit for monitoring OpenShift.</p>
+
+<h6 id="plugginginprometheusandothercomponents">Plugging in Prometheus and other components</h6>
+
+<p>There are several ways to install Prometheus in OpenShift (a neat example here), but importantly the right ports on the cluster nodes must be opened to let the Prometheus pod connect. Once deployed, Prometheus can gather and store metrics exposed by the kubelets. Of course, you can configure more targets (like routers, underlying nodes, etc) and it will scrape metrics from them too. The scrape configuration is loaded into the Prometheus pod as ConfigMaps. All the gathered metrics are stored in a time-series database locally on the node where the pod runs (in the default setup).</p>
+
+<p>In order to gather statistics from within your own application, you can make use of the client libraries that are listed in the Prometheus website. You can use them to instrument Prometheus metrics and expose them from within your application, usually via a /metrics endpoint. For operators, it is handy to have more information about underlying nodes than that exposed by the kubelets. For this you can make use of node-exporter, with which you can collect hardware and OS metrics. A whole lot more of exporters for different metric sources are listed on the Prometheus website.</p>
+
+<p>While one can gather and store metrics using Prometheus, we also need to setup alerting and dashboarding for good old cluster-ops. We can set up alerting via Alertmanager which we can use to trigger alerts to external alerting systems, email, slack, pagerduty, etc. As for dashboarding, Prometheus itself comes with a simple query and graphing feature, but it is common to integrate a full-fledged dashboard tool such as Grafana.</p>
+
+<p><img src="http://www.goposky.com/assets/images/example-topology.png" alt="Example topology with Prometheus, alertmanager, node-exporter and grafana in OpenShift"></p>
+
+<p>One caveat to bear in mind is that Prometheus is not built for long term storage, so if we want to collect long-term statistics we should use adapters to send the metrics to external databases like InfluxDB. It is hoped that long term storage capability will be provided built-in with OpenShift when it’s Prometheus integration reaches full feature status.</p>
+
+<h6 id="getsomeactionableinformation">Get some actionable information</h6>
+
+<p>Armed with the necessary monitoring tools, we now arrive at the topic of “what” to monitor. For applications, the most interesting metrics to get started would be number of requests, response times, error rates, etc, next to specific cases needing investigation. For operations, it’s the possibility to monitor cpu, memory, latency, and just about everything the kubelet and other exporters can provide, over individual containers to cluster-wide scopes. Resource utilization information is useful to manage and determine quotas and cluster expansion decisions. One cool thing with prometheus is that we can use OpenShift selectors as filters while querying the time series. The Prometheus query browser is your friend, and as obvious the possibilities are endless. Alerting can be setup on the collected metrics to aid proactive problem detection. The observability achieved should help not only to track back to what happened in the past, but also to improve future performance.</p>
+
+<p><img src="http://www.goposky.com/assets/images/grafana-dashboard.png" alt="A grafana dashboard based on Prometheus metrics collected from node-exporter"></p>
+
+<p>As mentioned before, Red Hat is clearly moving towards a Prometheus based metrics engine for future versions of OpenShift, which is indeed a good sign. OpenShift already has a good logging infrastructure with its integrated EFK (Elasticsearch-Fluentd-Kibana) stack. Red Hat also has plans to incorporate tracing and service mesh solutions into the OpenShift platform, thus promising Observability across all the three pillars.</p>
+
+<p><em>PS: This blog post was published on <a href="https://nl.devoteam.com/en/blog-post/observability-red-hat-openshift-prometheus/">devoteam.com</a></em></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../../../../author/gopal/">Gopal Ramachandran</a></h4>
+
+                    <p>Read <a href="../../../../author/gopal/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Observability%20in%20OpenShift%20with%20Prometheus&amp;url=http://www.goposky.com/2018/03/10/observability-openshift-prometheus/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.goposky.com/2018/03/10/observability-openshift-prometheus/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.goposky.com/2018/03/10/observability-openshift-prometheus/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function () {
+this.page.url = 'http://www.goposky.com/2018/03/10/observability-openshift-prometheus/';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = 'ghost-11'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://goposky.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright">Unless otherwise noted, content on this site is licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 License</a></section>
+            <section class="poweredby">Built with <a href="https://ghost.org">Ghost</a> and hosted on <a href="https://github.com">Github</a>.</section>
+        </footer>
+
+    </footer></article></main></div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=4bb1087f06"></script>
+    <script type="text/javascript" src="../../../../assets/js/index.js?v=4bb1087f06"></script>
+
+</body>
