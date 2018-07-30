@@ -1,20 +1,17 @@
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Exploring OpenShift with Red Hat CDK 3.0</title>
-    <meta name="description" content="">
-
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/built/screen.css?v=0830d18c08">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css?v=0830d18c08">
 
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
-    <link rel="stylesheet" type="text/css" href="../../../../assets/css/screen.css?v=446e4996aa">
-
-
+    <link rel="shortcut icon" href="../../../../favicon.ico" type="image/x-icon">
     <link rel="canonical" href="http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/">
     <meta name="referrer" content="no-referrer-when-downgrade">
     <link rel="amphtml" href="http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/amp/">
@@ -41,6 +38,7 @@
     <meta name="twitter:data1" content="Gopal Ramachandran">
     <meta name="twitter:label2" content="Filed under">
     <meta name="twitter:data2" content="Openshift, PaaS, container, devops, RedHat, minishift">
+    <meta name="twitter:site" content="@goposky">
     
     <script type="application/ld+json">
 {
@@ -49,7 +47,12 @@
     "publisher": {
         "@type": "Organization",
         "name": "Personal blog, tech chatter",
-        "logo": "http://www.goposky.com/ghost/img/ghosticon.jpg"
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://www.goposky.com/favicon.ico",
+            "width": 60,
+            "height": 60
+        }
     },
     "author": {
         "@type": "Person",
@@ -65,90 +68,98 @@
     "description": "Red Hat’s OpenShift container platform is an industry leading PaaS for building and running cloud-native applications. OpenShift is an enterprise-grade platform with comprehensive features, but this blog will limit to looking at it from an introductory viewpoint for the developer or CI/CD engineer. For a quick head-start on",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://www.goposky.com"
+        "@id": "http://www.goposky.com/"
     }
 }
     </script>
 
-    <meta name="generator" content="Ghost 0.11">
+    <script src="../../../../public/ghost-sdk.min.js?v=0830d18c08"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "f1a3b9f7fd0d"
+});
+</script>
+    <meta name="generator" content="Ghost 1.25">
     <link rel="alternate" type="application/rss+xml" title="Personal blog, tech chatter" href="http://www.goposky.com/rss/">
     <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64780937-1', 'auto');
-  ga('send', 'pageview');
-
+var ga_id = 'UA-64780937-1';
+var disqus_shortname = 'your-shortname'
+var social_link = {
+    'linkedin': 'https://www.linkedin.com/in/goposky',
+    'github': 'https://github.com/goposky'
+} 
 </script>
-</head>
-<body class="post-template tag-openshift tag-paas tag-container tag-devops tag-redhat tag-minishift nav-closed">
 
-    
+</head>
+<body class="post-template tag-openshift tag-paas tag-container tag-devops tag-redhat tag-minishift">
 
     <div class="site-wrapper">
 
         
 
-
-<header class="main-header post-head no-cover">
-    <nav class="main-nav  clearfix">
-<center><a href="http://www.goposky.com">/home</a> <a href="http://www.twitter.com/goposky" target="_blank">/twitter</a> <a href="http://www.linkedin.com/in/goposky" target="_blank">/linkedin</a> <a href="http://www.github.com/goposky" target="_blank">/github</a> <a href="http://www.instagram.com/goposky" target="_blank">/instagram</a> <a href="mailto:mail@goposky.com" target="_blank">/email</a></center>
-        
-    </nav>
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="http://www.goposky.com">Personal blog, tech chatter</a>
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-tw" href="https://twitter.com/goposky" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+</a>
+        </div>
+            <a class="rss-button" href="http://cloud.feedly.com/#subscription/feed/http://www.goposky.com/rss/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"></circle><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path></svg>
+</a>
+    </div>
+</nav>
+    </div>
 </header>
 
-<main class="content" role="main">
-    <article class="post tag-openshift tag-paas tag-container tag-devops tag-redhat tag-minishift">
 
-        <header class="post-header">
-            <h1 class="post-title">Exploring OpenShift with Red Hat CDK 3.0</h1>
-            <section class="post-meta">
-                <time class="post-date" datetime="2017-06-27">27 June 2017</time>  on <a href="../../../../tag/openshift/">Openshift</a>, <a href="../../../../tag/paas/">PaaS</a>, <a href="../../../../tag/container/">container</a>, <a href="../../../../tag/devops/">devops</a>, <a href="../../../../tag/redhat/">RedHat</a>, <a href="../../../../tag/minishift/">minishift</a>
-            </section>
-        </header>
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
 
-        <section class="post-content">
-            <p>Red Hat’s OpenShift container platform is an industry leading PaaS for building and running cloud-native applications. OpenShift is an enterprise-grade platform with comprehensive features, but this blog will limit to looking at it from an introductory viewpoint for the developer or CI/CD engineer.</p>
+        <article class="post-full post tag-openshift tag-paas tag-container tag-devops tag-redhat tag-minishift no-image">
 
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2017-06-27">27 June 2017</time>
+                        <span class="date-divider">/</span> <a href="../../../../tag/openshift/">Openshift</a>
+                </section>
+                <h1 class="post-full-title">Exploring OpenShift with Red Hat CDK 3.0</h1>
+            </header>
+
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown"><p>Red Hat’s OpenShift container platform is an industry leading PaaS for building and running cloud-native applications. OpenShift is an enterprise-grade platform with comprehensive features, but this blog will limit to looking at it from an introductory viewpoint for the developer or CI/CD engineer.</p>
 <p>For a quick head-start on OpenShift fundamentals I recommend reading <a href="http://playbooks-rhtconsulting.rhcloud.com/playbooks/fundamentals/building_blocks_openshift.html">this website</a>. For more detail on architecture and components, the best place to go is the <a href="https://docs.openshift.com/container-platform/3.5/architecture/index.html">Red Hat official documentation</a>.</p>
-
 <p>OpenShift is available in many flavours.</p>
-
 <ul>
 <li><em><a href="https://www.openshift.org">OpenShift Origin</a></em> - The upstream open-source version, built upon Kubernetes and other projects.</li>
-<li><em><del>OpenShift Enterprise</del><sup id="fnref:1"><a href="index.html#fn:1" rel="footnote">1</a></sup> <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Openshift Container Platform</a></em> - Red Hat’s flavour of Openshift platform for on-prem or cloud deployment with support.</li>
+<li><em><s>OpenShift Enterprise</s><sup class="footnote-ref"><a href="index.html#fn1" id="fnref1">[1]</a></sup> <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Openshift Container Platform</a></em> - Red Hat’s flavour of Openshift platform for on-prem or cloud deployment with support.</li>
 <li><em><a href="https://www.openshift.com/dedicated/index.html">OpenShift Dedicated</a></em> - Same as Openshift enterprise, but hosted as a cloud-based service by Red Hat.</li>
 <li><em><a href="https://www.openshift.com">OpenShift Online</a></em> - A fully managed on-demand PaaS on cloud with limited memory and storage.</li>
 <li><em><a href="https://developers.redhat.com/products/cdk/overview/">Red Hat CDK</a></em> - Container Development Kit, a stripped-down version to serve as a local environment for developers.</li>
 <li><em><a href="https://openshift.io">openshift.io</a></em> (not GA as of writing) - A fully cloud-based development environment.</li>
 </ul>
-
 <p>Many indeed! But for this blog I choose the Red Hat CDK, the easiest way to get up and running. The CDK will provide a developer-ready single node OpenShift cluster. Typical use cases of the CDK environment would be to do local development, demos, or simply to familiarize with OpenShift.</p>
-
 <p><strong>Installation and setup</strong></p>
-
 <p>With the release of the new CDK version 3.0 the setup is extremely simple. It will spin up a Red Hat VM on the hypervisor of choice, and then create a single node Openshift cluster on this VM. I use macOS with virtualbox (default) for this setup.</p>
-
 <ul>
 <li>Join the <a href="https://developers.redhat.com/">Red Hat Developers program</a> and obtain a free Red Hat Developer subscription.</li>
 <li>Download the installer from <a href="https://developers.redhat.com/products/devsuite/download/">Red Hat Development Suite</a>.</li>
 <li>Run the installation and select Red Hat Container Development Kit components from the installer menu.</li>
 </ul>
-
 <p><em>For additional options or other OS/hypervisors refer to <a href="https://access.redhat.com/documentation/en/red-hat-container-development-kit/">Red Hat documentation</a>.</em></p>
-
 <p>The CDK comes bundled with the <code>minishift</code> and <code>oc</code> binaries that you can use to interact with Openshift. To set up the CDK cluster,</p>
-
 <ul>
 <li>Set and export the variables <code>MINISHIFT_USERNAME</code> and <code>MINISHIFT_PASSWORD</code> with your subscription account.</li>
 <li>Start minishift to create the minishift vm and provision a single-node Openshift cluster over it</li>
 </ul>
-
 <pre><code>$ minishift start
-Starting local OpenShift cluster using 'virtualbox' hypervisor...  
-Registering machine using subscription-manager  
+Starting local OpenShift cluster using 'virtualbox' hypervisor...
+Registering machine using subscription-manager
 ... 
    OpenShift server started.
    The server is accessible via web console at:
@@ -157,40 +168,33 @@ Registering machine using subscription-manager
    To login as administrator:
        oc login -u system:admin
 </code></pre>
-
 <ul>
-<li>To set the <code>oc</code> binary to your path, run:
+<li>To set the <code>oc</code> binary to your path, run:<br>
 <code>eval $(minishift oc-env)</code></li>
 </ul>
-
-<p>You now have an Openshift cluster at your disposal complete with a master-cum-node host, built-in docker registry, router, internal etcd store, etc. You can check the versions you got:  </p>
-
+<p>You now have an Openshift cluster at your disposal complete with a master-cum-node host, built-in docker registry, router, internal etcd store, etc. You can check the versions you got:</p>
 <pre><code>$ oc version
-oc v3.5.5.8  
-kubernetes v1.5.2+43a9be4  
+oc v3.5.5.8
+kubernetes v1.5.2+43a9be4
 </code></pre>
-
 <p><strong>Deploy an application</strong></p>
-
 <ul>
 <li>Login with the <em>developer</em> account: <code>oc login -u developer -p developer</code></li>
 <li>Create a new project</li>
 </ul>
-
 <pre><code>$ oc new-project cdk-intro
-Now using project "cdk-intro" on server "https://192.168.99.100:8443".  
+Now using project "cdk-intro" on server "https://192.168.99.100:8443".
 </code></pre>
-
 <p>The project is created and you are automatically "inside" that project's namespace.</p>
-
 <ul>
-<li>Now let's deploy an application to this project. We will deploy a sample nodejs app from github here at <a href="https://github.com/openshift/nodejs-ex">https://github.com/openshift/nodejs-ex</a>. We will use OpenShift's source-to-image (s2i) feature. This is the sequence events that will occur:
-<ul><li>OpenShift pulls the source code from github and determines what type of application this is, ie, nodejs.</li>
+<li>Now let's deploy an application to this project. We will deploy a sample nodejs app from github here at <a href="https://github.com/openshift/nodejs-ex">https://github.com/openshift/nodejs-ex</a>. We will use OpenShift's source-to-image (s2i) feature. This is the sequence events that will occur:</li>
+</ul>
+<ul>
+<li>OpenShift pulls the source code from github and determines what type of application this is, ie, nodejs.</li>
 <li>Choses a builder image that matches nodejs</li>
 <li>Builds the application image and pushes it to an <em>imagestream</em>.</li>
-<li>This will automatically trigger a <em>build</em> followed by a <em>deployment</em>. At the end of the deployment we will have the application deployed as a service available at an endpoint.</li></ul></li>
+<li>This will automatically trigger a <em>build</em> followed by a <em>deployment</em>. At the end of the deployment we will have the application deployed as a service available at an endpoint.</li>
 </ul>
-
 <pre><code>$ oc new-app https://github.com/openshift/nodejs-ex -l name=my-app
 --&gt; Found image 2e621c4 (12 days old) in image stream "openshift/nodejs" under tag "4" for "nodejs"
 
@@ -217,114 +221,296 @@ Now using project "cdk-intro" on server "https://192.168.99.100:8443".
     Build scheduled, use 'oc logs -f bc/nodejs-ex' to track its progress.
     Run 'oc status' to view your app.
 </code></pre>
-
 <ul>
 <li>We can view the status of the app as follows:</li>
 </ul>
-
 <pre><code>$ oc status
 In project cdk-intro on server https://192.168.99.100:8443
 
-svc/nodejs-ex - 172.30.35.237:8080  
+svc/nodejs-ex - 172.30.35.237:8080
   dc/nodejs-ex deploys istag/nodejs-ex:latest &lt;-
     bc/nodejs-ex source builds https://github.com/openshift/nodejs-ex on openshift/nodejs:4 
     deployment #1 deployed 4 minutes ago - 1 pod
 </code></pre>
-
 <ul>
 <li>Let's expose the service and get a route to access it.</li>
 </ul>
-
 <pre><code>$ oc expose service nodejs-ex
 route "nodejs-ex" exposed
 
 $ oc get route
-NAME        HOST/PORT                                   PATH      SERVICES    PORT       TERMINATION   WILDCARD  
-nodejs-ex   nodejs-ex-cdk-intro.192.168.99.100.nip.io             nodejs-ex   8080-tcp                 None  
+NAME        HOST/PORT                                   PATH      SERVICES    PORT       TERMINATION   WILDCARD
+nodejs-ex   nodejs-ex-cdk-intro.192.168.99.100.nip.io             nodejs-ex   8080-tcp                 None
 </code></pre>
-
 <p>The application is now accessible at <em><a href="http://nodejs-ex-cdk-intro.192.168.99.100.nip.io">http://nodejs-ex-cdk-intro.192.168.99.100.nip.io</a></em>.</p>
-
 <p>OpenShift integrates well with developer IDEs like Eclipse. Read <a href="http://www.sterburg.nl/2017/05/28/openshift-local-development-options/">Samuel Terburg's blog</a> for a complete list of local development options.</p>
-
 <p><strong>Continuous delivery with OpenShift</strong></p>
-
 <p>While OpenShift comes integrated with Jenkins, it is also possible to just use the built-in continuous delivery features of OpenShift itself. A <em>build</em> can be configured with triggers based on source code change, registry update, etc which will automatically trigger off a <em>deployment</em>.</p>
-
 <p>OpenShift <em>projects</em> (based on kubernetes <em>namespaces</em>) are isolated, ie, objects residing in one namespace are oblivious to other namespaces unless configured otherwise. This allows us to create logical environments that are separate from each other in the form of namespaces. Thus you could have a project representing your <em>dev</em> environment, another project for <em>test</em>, <em>prod</em>, and so on.</p>
-
 <p>Usually we do not want to let our <em>dev</em> and <em>prod</em> containers running on the same host. Typically we have more powerful and secure hosts for our <em>prod</em> environments than for <em>dev</em> or <em>test</em>. This separation can be done easily using <em>labels</em> and <em>selectors</em>. You label specific nodes as <em>env=dev</em>, <em>env=prod</em>, etc. Then, you can specify a <em>nodeSelector</em> for each of your project and specify the label corresponding to the environment. Once this is done, your <em>dev</em> project's pods will land on your <em>dev</em> hosts and <em>prod</em> pods on <em>prod</em> hosts.  <em>Labels</em> and <em>selectors</em> are simple yet powerful, so expect to make use of them a lot.</p>
-
 <p>Organizations that are paranoid about environment isolation can deploy separate OpenShift clusters for each environment, and connect them to a common registry to do continuous delivery across environments. This combined with OpenShift's SDN (software Defined Network) provides robust isolation. Unfortunately you cannot explore a multi-node setup with the CDK environment. You can set that up using the opensource version, or the 30 day evaluation subscription of <a href="https://www.openshift.com/container-platform/trial.html">Openshift Enterprise</a>.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Apparently rebranded to sound less enterprise-y and boring. <a href="index.html#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+</div>
+            </section>
 
-<div class="footnotes"><ol><li class="footnote" id="fn:1"><p>Apparently rebranded to sound less enterprise-y and boring. <a href="index.html#fnref:1" title="return to article">↩</a></p></li></ol></div>
-        </section>
 
-        <footer class="post-footer">
+            <footer class="post-full-footer">
 
-
-
-            <section class="author">
-                <h4><a href="../../../../author/gopal/">Gopal Ramachandran</a></h4>
-
-                    <p>Read <a href="../../../../author/gopal/">more posts</a> by this author.</p>
-                <div class="author-meta">
-                    
-                    
+                <section class="author-card">
+                    <section class="author-card-content">
+                        <h4 class="author-card-name"><a href="../../../../author/gopal/">Gopal Ramachandran</a></h4>
+                            <p>Read <a href="../../../../author/gopal/">more posts</a> by this author.</p>
+                    </section>
+                </section>
+                <div class="post-full-footer-right">
+                    <a class="author-card-button" href="../../../../author/gopal/">Read More</a>
                 </div>
+
+            </footer>
+
+            <section class="post-full-comments">
+                <div id="disqus_thread"></div>
+                <script>
+                    if (window.disqus_shortname) {
+                        var disqus_config = function () {
+                            this.page.url = 'http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/';
+                            this.page.identifier = 'ghost-8';
+                        };
+                        (function() {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                </script>
             </section>
 
 
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Exploring%20OpenShift%20with%20Red%20Hat%20CDK%203.0&amp;url=http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-                    <span class="hidden">Google+</span>
-                </a>
+        </article>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card">
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">— Personal blog, tech chatter —</small>
+                        <h3 class="read-next-card-header-title"><a href="../../../../tag/openshift/">Openshift</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"></path></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="../../../../2018/03/10/observability-openshift-prometheus/">Observability in OpenShift with Prometheus</a></li>
+                            <li><a href="../../../02/02/born-in-the-cloud/">Born in the cloud</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="../../../../tag/openshift/">See all 2 posts →</a>
+                    </footer>
+                </article>
+
+                <article class="post-card post tag-devops tag-scrum tag-agile no-image">
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="../../../07/24/agile-scrum-from-the-trenches/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">devops</span>
+                <h2 class="post-card-title">Agile/Scrum from the trenches</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>Since around 2011 most of the teams I worked with have followed some kind of "Agile" methodology. An year ago I joined the IT infrastructure department of an enterprise, which I</p>
             </section>
+        </a>
+        <footer class="post-card-meta">
+            <span class="post-card-author"><a href="../../../../author/gopal/">Gopal Ramachandran</a></span>
+        </footer>
+    </div>
+</article>
+
+                <article class="post-card post tag-cloud-native tag-container tag-kubernetes tag-paas tag-openshift tag-google tag-docker tag-cloud no-image">
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="../../../02/02/born-in-the-cloud/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">cloud-native</span>
+                <h2 class="post-card-title">Born in the cloud</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>It is 2017. Gone are the days when terms such as “cloud” and “devops” were brushed off as mere hype. Yes, in a sense these are just words, but they have come to</p>
+            </section>
+        </a>
+        <footer class="post-card-meta">
+            <span class="post-card-author"><a href="../../../../author/gopal/">Gopal Ramachandran</a></span>
+        </footer>
+    </div>
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="http://www.goposky.com">
+            <span>Personal blog, tech chatter</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">—</span>
+    <div class="floating-header-title">Exploring OpenShift with Red Hat CDK 3.0</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"></path>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Exploring%20OpenShift%20with%20Red%20Hat%20CDK%203.0&amp;url=http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/" onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"></path></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/" onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path></svg>
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
 
 
 
 
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-var disqus_config = function () {
-this.page.url = 'http://www.goposky.com/2017/06/27/openshift-cdk3-test-drive/';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = 'ghost-8'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://goposky.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
-
-
-        <footer class="site-footer clearfix">
-            <section class="copyright">Unless otherwise noted, content on this site is licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 License</a></section>
-            <section class="poweredby">Built with <a href="https://ghost.org">Ghost</a> and hosted on <a href="https://github.com">Github</a>.</section>
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="http://www.goposky.com">Personal blog, tech chatter</a> © 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="http://www.goposky.com">Latest Posts</a>
+                    
+                    <a href="https://twitter.com/goposky" target="_blank">Twitter</a>
+                    <a href="https://ghost.org" target="_blank">Ghost</a>
+                </nav>
+            </div>
         </footer>
 
-    </footer></article></main></div>
+    </div>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=0830d18c08"></script>
+
+    <script>
+        if (window.social_link) {
+            var url_regexp = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+            $.each(window.social_link, function(type, url) {
+                if (typeof url === "string" && url_regexp.test(url)) {
+                    $('<a>', {
+                        class: 'social-link social-link-'+type,
+                        href: url,
+                        target: '_blank'
+                    }).appendTo('.social-links');
+                    var builtin_type = ['500px', 'facebook', 'flickr', 'github', 'gmail', 'googleplus', 'instagram', 'line', 'linkedin', 'messenger', 'microsoftoutlook', 'plurk', 'sinaweibo', 'skype', 'snapchat', 'stackoverflow', 'telegram', 'twitter', 'wechat', 'whatsapp'];
+                    var icon_path = '/assets/icons/type.svg?v=0830d18c08'
+                    if (builtin_type.indexOf(type) > -1) {
+                        icon_path = icon_path.replace('type', type);
+                    } else if (type.endsWith('-local')) {
+                        icon_path = icon_path.replace('type', type.substring(0, type.length-6));
+                    } else {
+                        icon_path = 'https://simpleicons.org/icons/'+type+'.svg';
+                    }
+                    $('.social-link-'+type).load(icon_path);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        if (window.ga_id) {
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', window.ga_id, 'auto');
+            ga('require', 'linkid', 'linkid.js');
+            ga('send', 'pageview');
+        }
+    </script>
+
+    <script type="text/javascript" src="../../../../assets/js/prism.js?v=0830d18c08"></script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+
     
-    <script type="text/javascript" src="../../../../assets/js/jquery.fitvids.js?v=446e4996aa"></script>
-    <script type="text/javascript" src="../../../../assets/js/index.js?v=446e4996aa"></script>
 
 </body>
