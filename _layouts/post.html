@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<div class="wrap">
+  <article class="post">
+    {% if page.image %}<img class="post-hero" src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">{% endif %}
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time>
+        <span class="dot"></span>
+        <span>{{ content | number_of_words | divided_by: 200.0 | ceil }} min read</span>
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.tags and page.tags.size > 0 %}
+      <div class="tags">
+        {% for tag in page.tags %}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor %}
+      </div>
+      {% endif %}
+    </header>
+    <div class="post-body">
+      {{ content }}
+    </div>
+  </article>
+</div>

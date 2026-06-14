@@ -1,0 +1,50 @@
+title: "Personal blog, tech chatter"
+description: "Personal blog, tech chatter — by Gopal Ramachandran."
+author: Gopal Ramachandran
+email: ""
+url: "https://www.goposky.com"
+baseurl: ""
+lang: en
+
+# Preserve the original Ghost URL structure so existing links keep working.
+permalink: /:year/:month/:day/:title/
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  # Keep straight quotes/dashes exactly as written in the source (match the
+  # original Ghost rendering; do not auto-smarten typography).
+  smart_quotes: [apos, apos, quot, quot]
+  typographic_symbols:
+    hellip: "..."
+    mdash: "---"
+    ndash: "--"
+
+# Social handles surfaced in the footer / SEO tags.
+social:
+  twitter: goposky
+  github: goposky
+  linkedin: goposky
+twitter:
+  username: goposky
+
+# Web3Forms access key for the /contact/ form. Get a free key by entering your
+# email at https://web3forms.com — submissions are emailed to that address.
+# Paste the key below (it is a public, client-safe key).
+web3forms_access_key: "YOUR_WEB3FORMS_ACCESS_KEY"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Files that are not part of the rendered site.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - .jekyll-cache
+  - "*.gem"
