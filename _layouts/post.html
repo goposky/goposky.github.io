@@ -20,5 +20,12 @@ layout: default
     <div class="post-body">
       {{ content }}
     </div>
+
+    {% if page.comments != false %}
+      <div class="post-comments" style="margin-top: 3rem;">
+        {% include giscus.html %}
+      </div>
+    {% endif %}
+
   </article>
 </div>

@@ -8,9 +8,9 @@ Hi,
 
 This is the personal blog site of Gopal Ramachandran.
 
-Find me on [GitHub](https://github.com/goposky), [LinkedIn](https://www.linkedin.com/in/goposky), or [Twitter](https://twitter.com/goposky).
+Find me on [GitHub](https://github.com/goposky), [LinkedIn](https://www.linkedin.com/in/goposky), [Speakerdeck](https://speakerdeck.com/goposky), or [Twitter](https://twitter.com/goposky).
 
-Have a question or just want to say hello? Drop me a message below.
+Or drop me a message below.
 
 <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="{{ site.web3forms_access_key }}">
