@@ -6,7 +6,7 @@ permalink: /about/
 
 Hi,
 
-This is the personal blog site of Gopal Ramachandran.
+This is the personal website of Gopal Ramachandran.
 
 Find me on [GitHub](https://github.com/goposky), [LinkedIn](https://www.linkedin.com/in/goposky), [Speakerdeck](https://speakerdeck.com/goposky), or [Twitter](https://twitter.com/goposky).
 
