@@ -15,7 +15,7 @@ Initially hired in as a consulting engineer from Devoteam I took on several role
 
 KNMI is probably one of the first data-driven organisations in the Netherlands. Change has been a constant factor in the 166 years of KNMI’s existence, since its area of business lies in the geophysical environment, and this will be no different in the years ahead. Apart from the general public, several important Dutch companies such as Rijkswaterstaat and Schiphol rely heavily on KNMI data. KNMI’s mission, as laid down in 2014, remains the focal point of its work:
 
-_KNMI advises and warns society about risks associated with weather, climate or seismology that need to be mitigated to limit societal damage and injuries. It uses its top-quality knowledge, technology, extensive monitoring and model network to offer products and services that contribute to the safety, accessibility, environmental quality and prosperity of the Netherlands._
+_"KNMI advises and warns society about risks associated with weather, climate or seismology that need to be mitigated to limit societal damage and injuries. It uses its top-quality knowledge, technology, extensive monitoring and model network to offer products and services that contribute to the safety, accessibility, environmental quality and prosperity of the Netherlands."_
 
 To help with its mission in the coming times, KNMI needed to expand capacity to handle ever larger quantities of data, the ability to adapt and implement changes with ease, and to be able to test and deploy IT systems and models with increased efficiency.
 
