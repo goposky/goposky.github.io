@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Large scale cloud transformation: the KNMI case"
-date: 2022-4-2 15:00:00 +0000
+date: 2022-12-20 15:00:00 +0000
 image: /assets/images/knmi.jpg
 tags: [AWS, cloud, digital, container, platform, agile]
 excerpt: "In late 2018 the KNMI (Royal Netherlands Meteorological Institute) embarked on its most ambitious project of recent times. At the core of this transformation is the migration of KNMI’s IT systems to the Cloud..."
